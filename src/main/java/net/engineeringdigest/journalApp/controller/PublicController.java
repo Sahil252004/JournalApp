@@ -11,11 +11,11 @@ public class PublicController {
     @Autowired
     private UserService userService;
     @GetMapping("/health-check")
-    public String gethealth(){
+        public String gethealth(){
         return "OK";
     }
     @PostMapping("/create-user")
     public void createUser(@RequestBody UserEntity user){
-        userService.SaveEntry(user);
+        userService.saveNewUser(user);
     }
 }

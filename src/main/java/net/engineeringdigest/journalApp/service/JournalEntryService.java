@@ -27,7 +27,7 @@ public class JournalEntryService {
             myje.setDate(LocalDateTime.now());
             JournalEntry saved = journalEntryRepository.save(myje);
             user.getJournalEntries().add(saved);
-            userService.SaveEntry(user);
+            userService.saveUser(user);
         }catch (Exception e)
         {
             System.out.println(e);
@@ -53,7 +53,7 @@ public class JournalEntryService {
     public void DeleteById(ObjectId id, String userName)
     {
         UserEntity user = userService.findByUserName(userName);
-        userService.SaveEntry(user);
+        userService.saveNewUser(user);
         user.getJournalEntries().removeIf(x-> x.getId().equals(id));
         journalEntryRepository.deleteById(String.valueOf(id));
     }
